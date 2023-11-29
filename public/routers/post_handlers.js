@@ -3,9 +3,9 @@ const crypto = require("crypto");
 const bcyrpt = require("bcrypt");
 const { encrypt_data } = require("../controller/encryption");
 const { single_insert_data } = require("../controller/db_queries");
-const { fs_renameFile } = require("../utils/file_system");
+const { fs_renameFile, fs_deleteFileFromDir, fs_readFileDir } = require("../utils/file_system");
 
-const baseURL = "./public/storage/users";
+const baseURL = "./public/storage/";
 
 const register = async (req, res, next) => {
     try {
@@ -19,7 +19,7 @@ const register = async (req, res, next) => {
         // ..
         // insert into db
             const ext = file.originalname.split(".")[1];
-            await fs_renameFile(`${baseURL}/${file.originalname}`, `${baseURL}/${data.staff_id.trim()}.${ext}`);
+            await fs_renameFile(`${baseURL}/multer/${file.originalname}`, `${baseURL}/users/${data.staff_id.trim()}.${ext}`);
             const payload = {
                 first_name: data.first_name.trim(),
                 surname: data.surname.trim(),

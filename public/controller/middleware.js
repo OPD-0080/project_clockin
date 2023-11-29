@@ -77,4 +77,4 @@ const validate_register_field = (req, res, next) => {
         console.log("...ERROR IN VALIDATING FIELD ...:", error);
     }
 }
-module.exports = { validat
+module.exports = { validate_register_field }

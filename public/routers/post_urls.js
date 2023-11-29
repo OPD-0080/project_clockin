@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         if (file.mimetype.startsWith("image")) {
             console.log("multer storage found");
-            cb(null, "./public/storage/users");
+            cb(null, "./public/storage/multer");
         }
         else {
             console.log("Uploaded file must be an image");
@@ -32,4 +32,4 @@ router.post("/user/register", upload.single("photo"), validate_register_field, r
 router.post("/user/auth/login", login);
 router.post("/user/auth/logout", logout);
 
-module.
+module.exports = router
